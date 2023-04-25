@@ -12,4 +12,5 @@ namespace OOP_vinh.pt.Entity
         public string Name { get; set; }
 
     }
+
 }

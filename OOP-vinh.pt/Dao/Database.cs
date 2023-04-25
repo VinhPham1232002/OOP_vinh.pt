@@ -50,22 +50,21 @@ namespace OOP_vinh.pt.Dao
             }
             return 0;
         }
-        public List<object> SelectTable(string name, Func<object, bool> where)
+        public List<object> SelectTable(string name)
         {
             switch (name.ToLower())
             {
                 case ProductTableNames:
                     {
-                        List<Object> products = productTable.FindAll(p => where(p)).Cast<object>().ToList();
-                        return products;
+                        return ProductTableNames.Cast<object>().ToList();
                     }
                 case CategoryTableNames:
                     {
-                        return categoryTable.FindAll(p => where(p)).Cast<object>().ToList();
+                        return CategoryTableNames.Cast<object>().ToList();
                     }
                 case AccessotionTableNames:
                     {
-                        return accessotionTable.FindAll(p => where(p)).Cast<object>().ToList();
+                        return AccessotionTableNames.Cast<object>().ToList();
                     }
                 default:
                     {
