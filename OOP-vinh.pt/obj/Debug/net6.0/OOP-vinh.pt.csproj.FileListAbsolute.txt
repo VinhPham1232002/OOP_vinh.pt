@@ -1,0 +1,15 @@
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\bin\Debug\net6.0\OOP-vinh.pt.exe
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\bin\Debug\net6.0\OOP-vinh.pt.deps.json
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\bin\Debug\net6.0\OOP-vinh.pt.runtimeconfig.json
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\bin\Debug\net6.0\OOP-vinh.pt.dll
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\bin\Debug\net6.0\OOP-vinh.pt.pdb
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\OOP-vinh.pt.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\OOP-vinh.pt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\OOP-vinh.pt.AssemblyInfoInputs.cache
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\OOP-vinh.pt.AssemblyInfo.cs
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\OOP-vinh.pt.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\OOP-vinh.pt.dll
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\refint\OOP-vinh.pt.dll
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\OOP-vinh.pt.pdb
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\OOP-vinh.pt.genruntimeconfig.cache
+C:\Users\ADMIN\source\repos\OOP-vinh.pt\OOP-vinh.pt\obj\Debug\net6.0\ref\OOP-vinh.pt.dll

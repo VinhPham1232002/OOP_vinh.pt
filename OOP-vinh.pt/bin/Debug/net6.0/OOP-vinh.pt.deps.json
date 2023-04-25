@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "OOP-vinh.pt/1.0.0": {
+        "runtime": {
+          "OOP-vinh.pt.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OOP-vinh.pt/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
