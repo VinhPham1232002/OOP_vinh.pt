@@ -10,29 +10,24 @@ namespace OOP_vinh.pt.Dao
 
     public class CategoryDao
     {
-        private static List<Category> category = Database.instants.SelectTable(Database.ProductTableNames).Cast<Category>().ToList();
+        private static List<Category> category = Database.instants.SelectTable(Database.CATEGORY_TABLE_NAMES).Cast<Category>().ToList();
         
         public int Insert(Category row)
         {
-            return Database.instants.InsertTable(Database.CategoryTableNames, row);
+            return Database.instants.InsertTable(Database.CATEGORY_TABLE_NAMES, row);
         }
         public int Update(Category row)
         {
-            return Database.instants.UpdateTable(Database.CategoryTableNames, row);
+            return Database.instants.UpdateTable(Database.CATEGORY_TABLE_NAMES, row);
         }
         public List<Category> FindAll(Category row)
         {
-            return category.FindAll(p => p.Name == row.Name);
+            return category.FindAll(p => p.Id == row.Id);
         }
         public Category FindById(int id)
         {
             return category.Find(p => p.Id == id);
         }
-        public Category FindByName(string name)
-        {
-            return category.Find(p => p.Name == name);
-        }
         
-
     }
 }
