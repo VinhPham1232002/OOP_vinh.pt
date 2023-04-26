@@ -9,192 +9,109 @@ namespace OOP_vinh.pt.Dao
 {
     public class Database
     {
-        public List<Product> productTable;
-        private List<Category> categoryTable;
-        private List<Accessotion> accessotionTable;
         public static Database instants = new Database();
-        public Database()
-        {
-            productTable = new List<Product>();
-            categoryTable = new List<Category>();
-            accessotionTable = new List<Accessotion>();
-        }
+
+        private static List<BaseRow> productTable = new();
+        private static List<BaseRow> categoryTable = new();
+        private static List<BaseRow> accessotionTable = new();
+
         public const string PRODUCT_TABLE_NAMES = "producttable";
         public const string CATEGORY_TABLE_NAMES = "categorytable";
         public const string ACCESSOTION_TABLE_NAMES = "accessotiontable";
+        private static Dictionary<string, List<BaseRow>> dictionary = new() {
+            {PRODUCT_TABLE_NAMES,productTable},
+            {CATEGORY_TABLE_NAMES,categoryTable},
+            {ACCESSOTION_TABLE_NAMES,accessotionTable}
+        };
 
 
-        public int InsertTable(string name, Object row)
+
+        private static Database instance;
+        public static Database Instance
         {
-            switch (name.ToLower())
+            get
             {
-                case PRODUCT_TABLE_NAMES:
-                    {
-                        productTable.Add((Product)row);
-                        break;
-                    }
-                case CATEGORY_TABLE_NAMES:
-                    {
-                        categoryTable.Add((Category)row);
-                        break;
-                    }
-                case ACCESSOTION_TABLE_NAMES:
-                    {
-                        accessotionTable.Add((Accessotion)row);
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
+                if (instance == null)
+                {
+                    instance = new Database();
+                }
+                return instance;
+            }
+        }
+        private Database() { }
+        public int InsertTable(string name, BaseRow row)
+        {
+            name = name.ToLower();
+            if (dictionary.ContainsKey(name.ToLower()))
+            {
+                dictionary[name].Add(row);
             }
             return 0;
         }
-        public List<object> SelectTable(string name)
+        public int UpdateTable(string name, BaseRow row)
         {
-            switch (name.ToLower())
+            name = name.ToLower();
+            if (dictionary.ContainsKey(name))
             {
-                case PRODUCT_TABLE_NAMES:
-                    {
-                        return PRODUCT_TABLE_NAMES.Cast<object>().ToList();
-                    }
-                case CATEGORY_TABLE_NAMES:
-                    {
-                        return CATEGORY_TABLE_NAMES.Cast<object>().ToList();
-                    }
-                case ACCESSOTION_TABLE_NAMES:
-                    {
-                        return ACCESSOTION_TABLE_NAMES.Cast<object>().ToList();
-                    }
-                default:
-                    {
-                        return null;
-                    }
+                int index = dictionary[name].FindIndex(p => p.Id == row.Id);
+                if (index == -1)
+                    //throw new Exception(string.Format("Can't find {0} has value = {1}", row.GetType(), row.ToString()));
+                    return -1;
+                dictionary[name][index] = row;
+                return index;
             }
-            return null;
+            return -1;
+        }
+        public bool DeleteTable(string name, BaseRow row)
+        {
+            name = name.ToLower();
 
-        }
-        public int UpdateTable(string name, Object row)
-        {
-            switch (name.ToLower())
+            if (dictionary.ContainsKey(name.ToLower()))
             {
-                case PRODUCT_TABLE_NAMES:
-                    {
-                        Product newProduct = (Product)row;
-                        int index = productTable.FindIndex(product => product.Id == newProduct.Id);
-                        productTable[index] = newProduct;
-                        break;
-                    }
-                case CATEGORY_TABLE_NAMES:
-                    {
-                        Category newCategory = (Category)row;
-                        int index = categoryTable.FindIndex(category => category.Id == newCategory.Id);
-                        categoryTable[index] = newCategory;
-                        break;
-                    }
-                case ACCESSOTION_TABLE_NAMES:
-                    {
-                        Accessotion newAccessotion = (Accessotion)row;
-                        int index = accessotionTable.FindIndex(accessotion => accessotion.Id == newAccessotion.Id);
-                        accessotionTable[index] = newAccessotion;
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
-            }
-            return 0;
-        }
-        public bool DeleteTable(string name, int row)
-        {
-            switch (name.ToLower())
-            {
-                case PRODUCT_TABLE_NAMES:
-                    {
-                        return productTable.RemoveAll(product => product.Id == row) > 0 ? true : false;
-                    }
-                case CATEGORY_TABLE_NAMES:
-                    {
-                        return categoryTable.RemoveAll(category => category.Id == row) > 0 ? true : false;
-                    }
-                case ACCESSOTION_TABLE_NAMES:
-                    {
-                        return accessotionTable.RemoveAll(accessotion => accessotion.Id == row) > 0 ? true : false;
-                    }
-                default:
-                    {
-                        break;
-                    }
+                return dictionary[name].RemoveAll(p => p.Id == row.Id) > 0 ? true : false;
             }
             return false;
         }
         public void TruncateTable(string name)
         {
-            switch (name.ToLower())
+            name = name.ToLower();
+
+            if (dictionary.ContainsKey(name.ToLower()))
             {
-                case PRODUCT_TABLE_NAMES:
-                    {
-                        productTable = new List<Product>();
-                        break;
-                    }
-                case CATEGORY_TABLE_NAMES:
-                    {
-                        categoryTable = new List<Category>();
-                        break;
-                    }
-                case ACCESSOTION_TABLE_NAMES:
-                    {
-                        accessotionTable = new List<Accessotion>();
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
+                dictionary[name].Clear();
             }
+            return;
         }
-        public int UpdateTableById(string name, int id, Object row)
+        public List<BaseRow> SelectTable(string name)
         {
-            switch (name.ToLower())
+            name = name.ToLower();
+
+            if (dictionary.ContainsKey(name.ToLower()))
             {
-                case PRODUCT_TABLE_NAMES:
-                    {
-                        Product newProduct = (Product)row;
-                        int index = productTable.FindIndex(product => product.Id == newProduct.Id);
-                        if (index == -1)
-                            throw new Exception(string.Format("Can't not find Product has id = {0}", id));
-                        productTable[index] = newProduct;
-                        break;
-                    }
-                case CATEGORY_TABLE_NAMES:
-                    {
-                        Category newCategory = (Category)row;
-                        int index = categoryTable.FindIndex(category => category.Id == newCategory.Id);
-                        if (index == -1)
-                        { 
-                            string.Format("Can't not find Category has id = {0}", id); 
-                        };
-                        categoryTable[index] = newCategory;
-                        break;
-                    }
-                case ACCESSOTION_TABLE_NAMES:
-                    {
-                        Accessotion newAccessotion = (Accessotion)row;
-                        int index = accessotionTable.FindIndex(accessotion => accessotion.Id == newAccessotion.Id);
-                        if (index == -1)
-                        {
-                            string.Format("Can't not find Accessotion has id = {0}", id);
-                        };
-                        accessotionTable[index] = newAccessotion;
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
+                return dictionary[name].ToList();
             }
-            return 0;
+            return null;
+        }
+        public List<BaseRow> SelectTable(string name, Func<BaseRow, bool> where)
+        {
+            name = name.ToLower();
+
+            if (dictionary.ContainsKey(name.ToLower()))
+            {
+                return dictionary[name].ToList();
+            }
+            return null;
+        }
+        public bool Save(string name, List<BaseRow> data)
+        {
+            name = name.ToLower();
+
+            if (dictionary.ContainsKey(name.ToLower()))
+            {
+                dictionary[name] = data;
+                return dictionary[name] == data;
+            }
+            return false;
         }
 
     }

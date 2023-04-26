@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_vinh.pt.Entity
 {
-    public class Accessotion: BaseEntity
+    public class Accessotion: BaseRow
     {
     }
 }

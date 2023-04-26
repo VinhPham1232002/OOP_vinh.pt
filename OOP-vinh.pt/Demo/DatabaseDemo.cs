@@ -8,48 +8,65 @@ using System.Threading.Tasks;
 
 namespace OOP_vinh.pt.Demo
 {
-    public class DatabaseDemo
-    {
-        public void InsertTableTest()
+    
+        public class DatabaseDemo
         {
-            Database.instants.InsertTable("ProductTable", new Product());
+            public void insertTableTest()
+            {
+                Database.Instance.InsertTable("productTable", new Product());
+                
+
+                Database.Instance.InsertTable("categoryTable", new Category());
+               
+
+                Database.Instance.InsertTable("accessotionTable", new Accessotion());
+                
+            }
+
+            public void updateTableTest()
+            {
+                Database.Instance.UpdateTable("categoryTable", new Category());
+                Database.Instance.UpdateTable("accessotionTable", new Accessotion());
+                Database.Instance.UpdateTable("productTable", new Product());
+            }
+            public void deleteTableTest()
+            {
+                Database.Instance.DeleteTable("categoryTable", new Category());
+                Database.Instance.DeleteTable("productTable", new Category());
+                Database.Instance.DeleteTable("accessotionTable", new Category());
+
+            }
+            public void truncateTableTest()
+            {
+                Database.Instance.TruncateTable("accessotionTable");
+                Database.Instance.TruncateTable("productTable");
+                Database.Instance.TruncateTable("categoryTable");
+            }
+            public void initDatabase()
+            {
+
+            }
+
+            public void printTableTest()
+            {
+                Console.WriteLine("---------Category Table");
+                foreach (Category category in Database.Instance.SelectTable("categoryTable").ToList())
+                {
+                    Console.WriteLine(category);
+                }
+                Console.WriteLine("---------Product Table");
+                foreach (Product product in Database.Instance.SelectTable("productTable").ToList())
+                {
+                    Console.WriteLine(product);
+                }
+                Console.WriteLine("---------Accessotion Table");
+                foreach (Accessotion accessotion in Database.Instance.SelectTable("accessotionTable").ToList())
+                {
+                    Console.WriteLine(accessotion);
+                }
+                Console.WriteLine("---------Select Where");
+            }
 
         }
-        public void UpdateTableTest()
-        {
-            Database.instants.UpdateTable("CategoryTable", new Category());
-        }
-        public void DeleteTableTest()
-        {
-            Database.instants.DeleteTable("AccessotionTable", 0);
-        }
-        public void TruncateTableTest()
-        {
-            Database.instants.TruncateTable("ProductTable");
-            Database.instants.TruncateTable("CategoryTable");
-            Database.instants.TruncateTable("AccessotionTable");
-        }
-        public void InitDatabase()
-        {
-            Database.instants = new Database();
-        }
-        public void PrintTableTest()
-        {
-            Console.WriteLine("------ProductTable");
-            foreach (Product product in Database.instants.SelectTable("ProductTable"))
-            {
-                Console.WriteLine(product);
-            }
-            Console.WriteLine("------CategoryTable");
-            foreach (Category category in Database.instants.SelectTable("CategoryTable"))
-            {
-                Console.WriteLine(category);
-            }
-            Console.WriteLine("------AccessotionTable");
-            foreach (Accessotion accessotion in Database.instants.SelectTable("AccessotionTable"))
-            {
-                Console.WriteLine(accessotion);
-            }
-        }
     }
-}
+

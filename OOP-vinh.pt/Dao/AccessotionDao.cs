@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOP_vinh.pt.Dao
 {
-
-    public class CategoryDao : BaseDao<Category>
+    public class AccessotionDao: BaseDao<Accessotion>
     {
         
     }

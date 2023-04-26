@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_vinh.pt.Entity
 {
-    public class Category:BaseEntity
+    public class Category:BaseRow
     {
     }
 }

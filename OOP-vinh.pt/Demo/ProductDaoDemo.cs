@@ -8,44 +8,45 @@ using System.Threading.Tasks;
 
 namespace OOP_vinh.pt.Demo
 {
-    public class CategoryDaoDemo
+    public class ProductDaoDemo
     {
-        CategoryDao categoryDao = new CategoryDao();
-        public CategoryDaoDemo()
+        ProductDao productDao = new ProductDao();
+        public ProductDaoDemo()
         {
 
         }
         public void Init()
         {
-
+            
         }
         public void InsertTest()
         {
-            categoryDao.Insert(new Category());
+            productDao.Insert(new Product());
         }
 
         public void UpdateTest()
         {
-            categoryDao.Update(new Category());
-
+            productDao.Update(new Product());
+            
         }
         public void DeleteTest()
         {
-            categoryDao.Delete(new Category());
+            productDao.Delete(new Product());
         }
         public void FindAllTest()
-        {
-            List<Category> categories = categoryDao.FindAll(new Category());
+        { 
+            List<Product> products = productDao.FindAll(new Product());
         }
 
         public void FindByNameTest()
         {
-            Category category = categoryDao.FindByName("");
+            Product product = productDao.FindByName("");
         }
 
         public void FindByIdTest()
         {
-            Category category = categoryDao.FindById(1);
+            Product product = productDao.FindById(1);
         }
     }
 }
+
